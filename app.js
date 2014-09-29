@@ -7,8 +7,8 @@ var fs = require('fs')
   , gm = require('gm');
 
 app.get('/', function  (req, res) {
-  var urlParts = url.parse(req.url, true);
-  var query = urlParts.query;
+  var query = req.query;
+  // var query = urlParts.query;
   console.log(query);
   gm(query.url)
     .resize(query.w, query.h)
