@@ -6,9 +6,11 @@ var fs = require('fs')
   , url = require('url')
   , gm = require('gm');
 
+
+
 app.get('/', function  (req, res) {
+  console.log(__dirname);
   var query = req.query;
-  // var query = urlParts.query;
   console.log(query);
   gm(query.url)
     .resize(query.w, query.h)
@@ -17,10 +19,12 @@ app.get('/', function  (req, res) {
     .write('busey.png', function (err) {
       if (!err) {
         console.log('done');
-      } else{
+      } else {
         console.log(err);
       }
     });
+
+    res.sendFile('busey.png');
   }
 );
 
